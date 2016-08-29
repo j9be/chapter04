@@ -21,11 +21,6 @@ public class Row {
             throw new IllegalArgumentException(
                     "Number of matches can not be more that the position.");
         }
-        if (matchedColors + matchedPositions == positions.length &&
-                matchedColors == 1) {
-            throw new IllegalArgumentException(
-                    "If all but one matches the last position can not match.");
-        }
         this.matchedColors = matchedColors;
         this.matchedPositions = matchedPositions;
     }
