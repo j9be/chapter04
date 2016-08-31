@@ -26,8 +26,8 @@ public class Row {
     }
 
     public boolean guessMatches(Color[] guess) {
-        return countMatchedColors(guess) == matchedColors &&
-                countMatchedPositions(guess) == matchedPositions;
+        return nrMatchingColors(guess) == matchedColors &&
+                nrMatchingPositions(guess) == matchedPositions;
     }
 
     /**
@@ -45,7 +45,7 @@ public class Row {
      * @param guess is the actual guess that we evaluate
      * @return the number of good colors out of position
      */
-    public int countMatchedColors(Color[] guess) {
+    public int nrMatchingColors(Color[] guess) {
         int count = 0;
         for (int i = 0; i < guess.length; i++) {
             for (int j = 0; j < positions.length; j++) {
@@ -63,7 +63,7 @@ public class Row {
      * @param guess is the actual guess that we evaluate
      * @return the number of colors that match in position
      */
-    public int countMatchedPositions(Color[] guess) {
+    public int nrMatchingPositions(Color[] guess) {
         int count = 0;
         for (int i = 0; i < guess.length; i++) {
             if (guess[i] == positions[i]) {

@@ -19,8 +19,8 @@ public class Game {
         if( isFinished()){
             throw new IllegalArgumentException("You can not guess on a finished game.");
         }
-        final int positionMatch = secretRow.countMatchedPositions(row.positions);
-        final int colorMatch = secretRow.countMatchedColors(row.positions);
+        final int positionMatch = secretRow.nrMatchingPositions(row.positions);
+        final int colorMatch = secretRow.nrMatchingColors(row.positions);
         row.setMatch(positionMatch, colorMatch);
         table.addRow(row);
         if( positionMatch == row.positions.length ){
