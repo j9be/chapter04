@@ -15,10 +15,10 @@ public class ColorManagerTest {
     }
 
     @Test
-    public void everyColorHasNextColor() {
+    public void noNextColorIsNullWhenThereIsOne() {
         ColorManager manager = new ColorManager(NR_COLORS);
         Color color = manager.firstColor();
-        while (color != Color.none) {
+        while ( manager.thereIsNextColor(color)) {
             Assert.assertNotNull(color = manager.nextColor(color));
         }
     }

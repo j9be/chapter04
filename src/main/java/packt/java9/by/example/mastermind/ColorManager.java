@@ -14,10 +14,14 @@ public class ColorManager {
         createOrdering();
     }
 
+    protected Color newColor(){
+        return new Color();
+    }
+
     protected Color[] createColors() {
         Color[] colors = new Color[nrColors];
         for (int i = 0; i < colors.length; i++) {
-            colors[i] = new Color();
+            colors[i] = newColor();
         }
         return colors;
     }

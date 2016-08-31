@@ -30,16 +30,21 @@ public abstract class Guesser {
 
     private Color[] nextNonFirstGuess() {
         int i = 0;
-        while (i < table.nrColumns) {
+        boolean guessFound = false;
+        while (i < table.nrColumns && !guessFound) {
             if (table.manager.thereIsNextColor(lastGuess[i])) {
                 lastGuess[i] = table.manager.nextColor(lastGuess[i]);
-                return lastGuess;
+                guessFound = true;
             } else {
                 lastGuess[i] = table.manager.firstColor();
                 i++;
             }
         }
-        return none;
+        if (guessFound) {
+            return lastGuess;
+        } else {
+            return none;
+        }
     }
 
     /**
@@ -48,7 +53,7 @@ public abstract class Guesser {
      * @param guess to match against the rows
      * @return true if all rows match
      */
-    protected boolean guessMatch(Color[] guess) {
+    private boolean guessMatch(Color[] guess) {
         for (Row row : table.rows) {
             if (!row.guessMatches(guess)) {
                 return false;
@@ -56,6 +61,8 @@ public abstract class Guesser {
         }
         return true;
     }
+
+
 
     /**
      * Create a new Row object that contains a guess that matches all guesses and the
