@@ -2,8 +2,9 @@ package packt.java9.by.example.mastermind;
 
 public class PrettyPrintRow {
 
-    public static String pprint(Row row){
+    public static String pprint(Row rawRow){
         String string = "";
+        PrintableRow row = new PrintableRow(rawRow);
         for( int i = 0 ; i < row.nrColumns() ; i++){
             string += row.position(i);
         }

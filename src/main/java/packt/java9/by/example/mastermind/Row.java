@@ -8,12 +8,17 @@ import java.util.Arrays;
  */
 public class Row {
     final Color[] positions;
-    private int matchedPositions;
-    private int matchedColors;
+    protected int matchedPositions;
+    protected int matchedColors;
     public static final Row none = new Row(Guesser.none);
 
     public Row(Color[] positions) {
         this.positions = Arrays.copyOf(positions, positions.length);
+    }
+
+    protected Row(Row cloneFrom) {
+        this(cloneFrom.positions);
+        setMatch(cloneFrom.matchedPositions, cloneFrom.matchedColors);
     }
 
     public void setMatch(int matchedPositions, int matchedColors) {
@@ -71,21 +76,5 @@ public class Row {
             }
         }
         return count;
-    }
-
-    public int nrColumns() {
-        return positions.length;
-    }
-
-    public Color position(int i) {
-        return positions[i];
-    }
-
-    public int matchedPositions() {
-        return matchedPositions;
-    }
-
-    public int matchedColors() {
-        return matchedColors;
     }
 }
