@@ -9,7 +9,7 @@ public class PrintableRow extends Row {
         return positions.length;
     }
 
-    public Color position(int i ) {
+    public Color position(int i) {
         return positions[i];
     }
 
