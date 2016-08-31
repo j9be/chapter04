@@ -1,27 +1,41 @@
 package packt.java9.by.example.mastermind;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ColorManager {
     final protected int nrColors;
     final protected Map<Color, Color> successor = new HashMap<>();
-    final private Color first;
+    private Color first;
 
     public ColorManager(int nrColors) {
         this.nrColors = nrColors;
-        first = new Color();
-        Color previousColor = first;
-        for (int i = 1; i < nrColors; i++) {
-            final Color thisColor = new Color();
-            successor.put(previousColor, thisColor);
-            previousColor = thisColor;
+        createOrdering();
+    }
+
+    protected Color[] createColors() {
+        Color[] colors = new Color[nrColors];
+        for (int i = 0; i < colors.length; i++) {
+            colors[i] = new Color();
         }
-        successor.put(previousColor, Color.none);
+        return colors;
+    }
+
+    protected void createOrdering() {
+        Color[] colors = createColors();
+        first = colors[0];
+        for (int i = 0; i < nrColors - 1; i++) {
+            successor.put(colors[i], colors[i + 1]);
+        }
     }
 
     public Color firstColor() {
         return first;
+    }
+
+    boolean thereIsNextColor(Color color) {
+        return successor.containsKey(color);
     }
 
     Color nextColor(Color color) {

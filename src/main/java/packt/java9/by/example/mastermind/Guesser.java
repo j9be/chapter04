@@ -24,18 +24,22 @@ public abstract class Guesser {
             setFirstGuess();
             return lastGuess;
         } else {
-            int i = 0;
-            while (i < table.nrColumns) {
-                lastGuess[i] = table.manager.nextColor(lastGuess[i]);
-                if (lastGuess[i].equals(Color.none)) {
-                    lastGuess[i] = table.manager.firstColor();
-                    i++;
-                } else {
-                    return lastGuess;
-                }
-            }
-            return none;
+            return nextNonFirstGuess();
         }
+    }
+
+    private Color[] nextNonFirstGuess() {
+        int i = 0;
+        while (i < table.nrColumns) {
+            if (table.manager.thereIsNextColor(lastGuess[i])) {
+                lastGuess[i] = table.manager.nextColor(lastGuess[i]);
+                return lastGuess;
+            } else {
+                lastGuess[i] = table.manager.firstColor();
+                i++;
+            }
+        }
+        return none;
     }
 
     /**
