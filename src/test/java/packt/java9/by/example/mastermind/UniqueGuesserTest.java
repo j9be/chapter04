@@ -19,4 +19,15 @@ public class UniqueGuesserTest {
         }
         Assert.assertEquals(6 * 5 * 4 * 3, numberOfGuesses);
     }
+
+    @Test
+    public void keepsGettingTillItBleedsOut(){
+        int numberOfGuesses = 0;
+        ColorManager manager = new ColorManager(NR_COLORS);
+        Table table = new Table(NR_COLUMNS, manager);
+        Guesser guesser = new UniqueGuesser(table);
+        while (guesser.guess() != Row.none) {
+            numberOfGuesses++;
+        }
+    }
 }

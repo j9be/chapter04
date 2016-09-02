@@ -5,10 +5,6 @@ public class PrintableRow extends Row {
         super(row);
     }
 
-    public int nrColumns() {
-        return positions.length;
-    }
-
     public Color position(int i) {
         return positions[i];
     }

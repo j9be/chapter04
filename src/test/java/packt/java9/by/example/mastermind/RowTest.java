@@ -50,4 +50,10 @@ public class RowTest {
         row.setMatch(NR_COLUMNS - 2, 2);
         Assert.assertTrue(row.guessMatches(positions));
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void throwsIAEForInvalidMatchParameters(){
+        Row row = new Row(new Color[NR_COLUMNS]);
+        row.setMatch(NR_COLUMNS,1);
+    }
 }

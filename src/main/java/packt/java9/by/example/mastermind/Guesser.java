@@ -2,10 +2,12 @@ package packt.java9.by.example.mastermind;
 
 public abstract class Guesser {
     protected final Table table;
+    private final ColorManager manager;
 
     public Guesser(Table table) {
         this.table = table;
         this.lastGuess = new Color[table.nrColumns];
+        this.manager = table.manager;
     }
 
     abstract protected void setFirstGuess();
@@ -32,11 +34,11 @@ public abstract class Guesser {
         int i = 0;
         boolean guessFound = false;
         while (i < table.nrColumns && !guessFound) {
-            if (table.manager.thereIsNextColor(lastGuess[i])) {
-                lastGuess[i] = table.manager.nextColor(lastGuess[i]);
+            if (manager.thereIsNextColor(lastGuess[i])) {
+                lastGuess[i] = manager.nextColor(lastGuess[i]);
                 guessFound = true;
             } else {
-                lastGuess[i] = table.manager.firstColor();
+                lastGuess[i] = manager.firstColor();
                 i++;
             }
         }
@@ -62,7 +64,9 @@ public abstract class Guesser {
         return true;
     }
 
-
+    private boolean guessDoesNotMatch(Color[] guess) {
+        return !guessMatch(guess);
+    }
 
     /**
      * Create a new Row object that contains a guess that matches all guesses and the
@@ -72,7 +76,7 @@ public abstract class Guesser {
      */
     public Row guess() {
         Color[] guess = nextGuess();
-        while (guess != none && !guessMatch(guess)) {
+        while (guess != none && guessDoesNotMatch(guess)) {
             guess = nextGuess();
         }
         if (guess == none) {

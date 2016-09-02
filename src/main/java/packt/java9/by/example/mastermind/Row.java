@@ -77,4 +77,9 @@ public class Row {
         }
         return count;
     }
+
+    public int nrOfColumns() {
+        return positions.length;
+    }
+
 }

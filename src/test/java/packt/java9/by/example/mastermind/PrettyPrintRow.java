@@ -5,7 +5,7 @@ public class PrettyPrintRow {
     public static String pprint(Row rawRow){
         String string = "";
         PrintableRow row = new PrintableRow(rawRow);
-        for( int i = 0 ; i < row.nrColumns() ; i++){
+        for( int i = 0 ; i < row.nrOfColumns() ; i++){
             string += row.position(i);
         }
         string += " ";

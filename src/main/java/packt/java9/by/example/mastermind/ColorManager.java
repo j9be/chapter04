@@ -18,7 +18,7 @@ public class ColorManager {
         return new Color();
     }
 
-    protected Color[] createColors() {
+    private Color[] createColors() {
         Color[] colors = new Color[nrColors];
         for (int i = 0; i < colors.length; i++) {
             colors[i] = newColor();
@@ -26,7 +26,7 @@ public class ColorManager {
         return colors;
     }
 
-    protected void createOrdering() {
+    private void createOrdering() {
         Color[] colors = createColors();
         first = colors[0];
         for (int i = 0; i < nrColors - 1; i++) {

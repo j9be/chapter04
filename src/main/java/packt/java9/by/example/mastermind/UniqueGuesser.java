@@ -26,7 +26,6 @@ public class UniqueGuesser extends Guesser {
         }
     }
 
-    private static final Object NOTHING = null;
     /**
      * @param guess that we check for containing one color only once
      * @return true if the guess does not contain any color more than once
