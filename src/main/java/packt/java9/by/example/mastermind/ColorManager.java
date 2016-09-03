@@ -42,7 +42,7 @@ public class ColorManager {
         return successor.containsKey(color);
     }
 
-    Color nextColor(Color color) {
+    public Color nextColor(Color color) {
         return successor.get(color);
     }
 }

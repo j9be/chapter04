@@ -1,16 +1,16 @@
-package packt.java9.by.example.mastermind;
+package packt.java9.by.example.mastermind.integration;
 
 
 import org.junit.Assert;
 import org.junit.Test;
-import packt.java9.by.example.mastermind.lettered.LetteredColorManager;
+import packt.java9.by.example.mastermind.*;
 
 public class IntegrationTest {
 
     @Test
     public void testSimpleGame(){
         final int nrColors = 6;
-        ColorManager manager = new LetteredColorManager(nrColors);
+        ColorManager manager = new ColorManager(nrColors);
         final int nrColumns = 4;
         Table table = new Table(nrColumns,manager);
         Color[] secret = new Color[nrColumns];
@@ -28,7 +28,7 @@ public class IntegrationTest {
         System.out.println();
         Game game = new Game(table,secret);
 
-        Guesser guesser = new GeneralGuesser(table);
+        Guesser guesser = new UniqueGuesser(table);
         while( ! game.isFinished()) {
             Row guess = guesser.guess();
             if( guess == Row.none){

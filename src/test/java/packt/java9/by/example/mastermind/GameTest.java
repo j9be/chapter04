@@ -1,6 +1,7 @@
 package packt.java9.by.example.mastermind;
 
 import org.junit.Test;
+import packt.java9.by.example.mastermind.*;
 
 public class GameTest {
 
