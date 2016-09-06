@@ -1,7 +1,6 @@
 package packt.java9.by.example.mastermind;
 
 import org.junit.Test;
-import packt.java9.by.example.mastermind.*;
 
 public class GameTest {
 
@@ -24,13 +23,13 @@ public class GameTest {
     @Test
     public void canAddNewGuess() {
         createTestGame();
-        game.newGuess(new Row(secret));
+        game.addNewGuess(new Row(secret));
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void throwsExceptionForFinishedGame() {
         createTestGame();
-        game.newGuess(new Row(secret));
-        game.newGuess(new Row(secret));
+        game.addNewGuess(new Row(secret));
+        game.addNewGuess(new Row(secret));
     }
 }

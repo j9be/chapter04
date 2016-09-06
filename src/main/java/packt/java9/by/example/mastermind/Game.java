@@ -21,7 +21,7 @@ public class Game {
         return positionMatch == nrOfColumns;
     }
 
-    public void newGuess(Row row) {
+    public void addNewGuess(Row row) {
         if (isFinished()) {
             throw new IllegalArgumentException("You can not guess on a finished game.");
         }
